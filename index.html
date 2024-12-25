@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trợ lý Khoa học THCS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            startup: {
+                typeset: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <meta name="description" content="Trợ lý thông minh hỗ trợ học tập môn Khoa học Tự nhiên cho học sinh THCS">
+    <meta property="og:title" content="Trợ lý Khoa học THCS">
+    <meta property="og:description" content="Khám phá khoa học cùng trợ lý thông minh">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+        <nav class="main-nav">
+            <div class="logo">
+                    <img src="static/logo.png" alt="Logo">
+                    <span class="logo-text">Trợ lý KHTN</span>
+            </div>
+            <ul class="nav-links">
+                    <li><a href="index.html" class="active">
+                        <i class="fas fa-home"></i> Trang chủ
+                    </a></li>
+                    <li><a href="about.html">
+                        <i class="fas fa-info-circle"></i> Giới thiệu
+                    </a></li>
+                    <li><a href="contact.html">
+                        <i class="fas fa-envelope"></i> Liên hệ
+                    </a></li>
+            </ul>
+        </nav>
+
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Trợ lý thực hành<br>Khoa học Tự nhiên</h1>
+                    <p class="header-description">Khám phá khoa học cùng trợ lý thông minh</p>
+                    <div class="header-badges">
+                        <span class="badge physics">
+                            <i class="fas fa-atom"></i> Vật lý
+                        </span>
+                        <span class="badge chemistry">
+                            <i class="fas fa-flask"></i> Hóa học
+                        </span>
+                        <span class="badge biology">
+                            <i class="fas fa-dna"></i> Sinh học
+                        </span>
+                    </div>
+                </div>
+                <div class="header-illustration">
+                    <div class="floating-icon physics">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="floating-icon chemistry">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="floating-icon biology">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                </div>
+        </div>
+        </header>
+
+        <div class="subject-selection">
+            <button class="subject-btn physics active" onclick="selectSubject('physics')">
+                <i class="fas fa-atom"></i>
+                <span>Vật lý</span>
+            </button>
+            <button class="subject-btn chemistry" onclick="selectSubject('chemistry')">
+                <i class="fas fa-flask"></i> Hóa học
+            </button>
+            <button class="subject-btn biology" onclick="selectSubject('biology')">
+                <i class="fas fa-dna"></i> Sinh học
+            </button>
+        </div>
+
+        <div class="subject-info" id="subjectInfo">
+            <!-- Nội dung sẽ được cập nhật bằng JavaScript -->
+        </div>
+
+        <div class="grade-selection">
+            <button class="grade-btn" onclick="selectGrade('6')">
+                <i class="fas fa-graduation-cap"></i> Lớp 6
+            </button>
+            <button class="grade-btn" onclick="selectGrade('7')">
+                <i class="fas fa-graduation-cap"></i> Lớp 7
+            </button>
+            <button class="grade-btn" onclick="selectGrade('8')">
+                <i class="fas fa-graduation-cap"></i> Lớp 8
+            </button>
+            <button class="grade-btn" onclick="selectGrade('9')">
+                <i class="fas fa-graduation-cap"></i> Lớp 9
+            </button>
+        </div>
+
+        <div class="topics-section">
+            <h3><i class="fas fa-book"></i> Chủ đề:</h3>
+            <div class="topics-grid" id="topicsGrid"></div>
+        </div>
+
+        <div class="reference-section">
+            <h3><i class="fas fa-video"></i> Tài liệu tham khảo:</h3>
+            <div class="video-grid" id="videoGrid"></div>
+            <div class="view-more">
+                <a href="document.html" class="view-more-btn">
+                    <i class="fas fa-book-open"></i> Xem thêm tài liệu
+                </a>
+            </div>
+        </div>
+
+        <div class="tools-section">
+            <div class="tools-header">
+                <h3>
+                    <i class="fas fa-calculator"></i>
+                    Công cụ tính toán & tra cứu
+                </h3>
+                <p>Khám phá các công cụ tính toán thông minh và tra cứu công thức nhanh chóng cho Vật lý, Hóa học và Sinh học</p>
+                <div class="tools-navigation">
+                    <span class="tools-nav-item active">Tính toán</span>
+                    <span class="tools-nav-item">Tra cứu công thức</span>
+                    <span class="tools-nav-item">Bảng tra cứu</span>
+                </div>
+            </div>
+            <!-- Phần nội dung công cụ tính toán hiện tại -->
+        </div>
+
+        <div class="formula-lookup">
+            <h4>Tra cứu công thức</h4>
+            
+            <!-- Vật lý -->
+            <div class="subject-formulas physics-formulas">
+                <h5 class="subject-title"><i class="fas fa-atom"></i> Vật lý</h5>
+                <div class="formula-list">
+                    <div class="formula-item">
+                        <h5>Chuyển động cơ học</h5>
+                        <p>v = s/t (vận tốc)</p>
+                        <p>a = (v - v₀)/t (gia tốc)</p>
+                        <p>s = v₀t + ½at² (quãng đường)</p>
+                        <p>v = v₀ + at (vận tốc tức thời)</p>
+                    </div>
+                    <div class="formula-item">
+                        <h5>Động lực học</h5>
+                        <p>F = ma (định luật II Newton)</p>
+                        <p>F₁ = -F₂ (định luật III Newton)</p>
+                        <p>P = F.v (công suất)</p>
+                        <p>W = F.s.cosα (công)</p>
+                    </div>
+                    <div class="formula-item">
+                        <h5>Năng lượng</h5>
+                        <p>E = mc² (năng lượng)</p>
+                        <p>Ep = mgh (thế năng)</p>
+                        <p>Ek = ½mv² (động năng)</p>
+                        <p>K = ½kx² (đàn hồi)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hóa học -->
+            <div class="subject-formulas chemistry-formulas">
+                <h5 class="subject-title"><i class="fas fa-flask"></i> Hóa học</h5>
+                <div class="formula-list">
+                    <div class="formula-item">
+                        <h5>Nồng độ dung dịch</h5>
+                        <p>C% = (m₁/m₂) × 100% (nồng độ %)</p>
+                        <p>CM = n/V (mol/lít)</p>
+                        <p>ρ = m/V (khối lượng riêng)</p>
+                        <p>n = m/M (số mol)</p>
+                    </div>
+                    <div class="formula-item">
+                        <h5>Cân bằng hóa học</h5>
+                        <p>K = [C]ᶜ[D]ᵈ/[A]ᵃ[B]ᵇ</p>
+                        <p>pH = -log[H⁺]</p>
+                        <p>pOH = -log[OH⁻]</p>
+                        <p>pH + pOH = 14</p>
+                    </div>
+                    <div class="formula-item">
+                        <h5>Điện hóa</h5>
+                        <p>m = kIt (định luật Faraday)</p>
+                        <p>E° = E°(ox) + E°(red)</p>
+                        <p>ΔG = -nFE°</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sinh học -->
+            <div class="subject-formulas biology-formulas">
+                <h5 class="subject-title"><i class="fas fa-dna"></i> Sinh học</h5>
+                <div class="formula-list">
+                    <div class="formula-item">
+                        <h5>Di truyền học</h5>
+                        <p>P × P → F₁ (lai thuần)</p>
+                        <p>F₁ × F₁ → F₂ (tỷ lệ 3:1)</p>
+                        <p>F₁ × P → Bc (lai thuận)</p>
+                        <p>Tần số gen: p + q = 1</p>
+                    </div>
+                    <div class="formula-item">
+                        <h5>Sinh thái học</h5>
+                        <p>D = N/S (mật độ quần thể)</p>
+                        <p>r = (N₂ - N₁)/(N₁ × t) (tốc độ tăng trưởng)</p>
+                        <p>H = -Σ(pi × ln pi) (đa dạng sinh học)</p>
+                    </div>
+                    <div class="formula-item">
+                        <h5>Trao đổi chất</h5>
+                        <p>C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O</p>
+                        <p>Hiệu suất = (TT/LT) × 100%</p>
+                        <p>BMI = m/h² (kg/m²)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về chúng tôi</h3>
+                <p>Trợ lý Khoa học THCS là công cụ hỗ trợ học tập hiệu quả dành cho học sinh trung học cơ sở.</p>
+            <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Thông tin</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> Về chúng tôi</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i> Chính sách bảo mật</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> Email: contact@trolykhoahoc.com</li>
+                    <li><i class="fas fa-phone"></i> Hotline: 0329.456.789</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Địa chỉ: Hà Nội, Việt Nam</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Trợ lý Khoa học THCS. Đã đăng ký bản quyền.</p>
+        </div>
+    </footer>
+</div>
+
+<script src="static/script.js"></script>
+<script src="static/calculator.js"></script>
+</body>
+</html>
