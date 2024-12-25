@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Trợ lý Khoa học THCS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="static/contact.css">
+    <link rel="icon" type="image/x-icon" href="https://www.dropbox.com/scl/fi/eyldk7qbkkp5k5rkbrmru/DALL_E-2024-12-25-13.11.47-A-digital-logo-design-of-a-robot-on-a-white-background-removebg-preview.png?rlkey=okixf0kwuwif0vabisf0v3ubw&st=i33846fa&dl=1">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="main-header">
+            <nav class="main-nav">
+                <div class="logo">
+                    <img src="https://www.dropbox.com/scl/fi/eyldk7qbkkp5k5rkbrmru/DALL_E-2024-12-25-13.11.47-A-digital-logo-design-of-a-robot-on-a-white-background-removebg-preview.png?rlkey=okixf0kwuwif0vabisf0v3ubw&st=i33846fa&dl=1" alt="Logo">
+                    <span class="logo-text">Trợ lý KHTN</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">
+                        <i class="fas fa-home"></i> Trang chủ
+                    </a></li>
+                    <li><a href="about.html">
+                        <i class="fas fa-info-circle"></i> Giới thiệu
+                    </a></li>
+                    <li><a href="contact.html" class="active">
+                        <i class="fas fa-envelope"></i> Liên hệ
+                    </a></li>
+                </ul>
+            </nav>
+
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Liên hệ với chúng tôi</h1>
+                    <p class="header-description">Chúng tôi luôn sẵn sàng hỗ trợ bạn</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="contact-content">
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <section class="contact-info">
+                    <h2><i class="fas fa-info-circle"></i> Thông tin liên hệ</h2>
+                    <div class="info-items">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="info-details">
+                                <h3>Địa chỉ</h3>
+                                <p>123 Đường ABC, Quận XYZ</p>
+                                <p>Đồng Nai, Việt Nam</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="info-details">
+                                <h3>Điện thoại</h3>
+                                <p>Hotline: 0329.456.789</p>
+                                <p>Hỗ trợ: 0987.654.321</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="info-details">
+                                <h3>Email</h3>
+                                <p>contact@trolykhoahoc.com</p>
+                                <p>support@trolykhoahoc.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="info-details">
+                                <h3>Giờ làm việc</h3>
+                                <p>Thứ 2 - Thứ 6: 8:00 - 17:00</p>
+                                <p>Thứ 7: 8:00 - 12:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Form -->
+                <section class="contact-form">
+                    <h2><i class="fas fa-paper-plane"></i> Gửi tin nhắn cho chúng tôi</h2>
+                    <form id="contactForm" onsubmit="return submitForm(event)">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Chủ đề</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Chọn chủ đề</option>
+                                <option value="support">Hỗ trợ kỹ thuật</option>
+                                <option value="feedback">Góp ý, phản hồi</option>
+                                <option value="cooperation">Hợp tác</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Nội dung tin nhắn</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Gửi tin nhắn
+                        </button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Map Section -->
+            <section class="map-section">
+                <h2><i class="fas fa-map-marked-alt"></i> Bản đồ</h2>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2265962703287!2d106.82792661533184!3d11.019700657836401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d0adb7d74a31%3A0xe8ea5c4e33bc4d7e!2zxJDhu5NuZyBOYWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1624856483607!5m2!1svi!2s" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về chúng tôi</h3>
+                    <p>Trợ lý Khoa học THCS là công cụ hỗ trợ học tập hiệu quả dành cho học sinh trung học cơ sở.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Thông tin</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-info-circle"></i> Về chúng tôi</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Chính sách bảo mật</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> Email: contact@trolykhoahoc.com</li>
+                        <li><i class="fas fa-phone"></i> Hotline: 0329.456.789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Địa chỉ: Đồng Nai, Việt Nam</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trợ lý Khoa học THCS. Đã đăng ký bản quyền.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="static/script.js"></script>
+    <script src="static/contact.js"></script>
+    <script src="https://dl.dropboxusercontent.com/scl/fi/2ae1rktudv7dm3704doaa/chatbot.js?rlkey=9cour9571967bh7i32zyu8k89&st=t4pxh4y7&dl=1"></script>
+</body>
+</html> 
