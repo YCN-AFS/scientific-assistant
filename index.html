@@ -22,7 +22,7 @@
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://www.dropbox.com/scl/fi/eyldk7qbkkp5k5rkbrmru/DALL_E-2024-12-25-13.11.47-A-digital-logo-design-of-a-robot-on-a-white-background-removebg-preview.png?rlkey=okixf0kwuwif0vabisf0v3ubw&st=i33846fa&dl=1">
     <meta name="description" content="Trợ lý thông minh hỗ trợ học tập môn Khoa học Tự nhiên cho học sinh THCS">
     <meta property="og:title" content="Trợ lý Khoa học THCS">
     <meta property="og:description" content="Khám phá khoa học cùng trợ lý thông minh">
@@ -32,7 +32,7 @@
         <header class="main-header">
         <nav class="main-nav">
             <div class="logo">
-                    <img src="static/logo.png" alt="Logo">
+                    <img src="https://www.dropbox.com/scl/fi/eyldk7qbkkp5k5rkbrmru/DALL_E-2024-12-25-13.11.47-A-digital-logo-design-of-a-robot-on-a-white-background-removebg-preview.png?rlkey=okixf0kwuwif0vabisf0v3ubw&st=i33846fa&dl=1" alt="Logo">
                     <span class="logo-text">Trợ lý KHTN</span>
             </div>
             <ul class="nav-links">
@@ -127,143 +127,370 @@
 
         <div class="tools-section">
             <div class="tools-header">
-                <h3>
-                    <i class="fas fa-calculator"></i>
-                    Công cụ tính toán & tra cứu
-                </h3>
-                <p>Khám phá các công cụ tính toán thông minh và tra cứu công thức nhanh chóng cho Vật lý, Hóa học và Sinh học</p>
-                <div class="tools-navigation">
-                    <span class="tools-nav-item active">Tính toán</span>
-                    <span class="tools-nav-item">Tra cứu công thức</span>
-                    <span class="tools-nav-item">Bảng tra cứu</span>
-                </div>
+                <h3><i class="fas fa-calculator"></i> Công cụ tính toán & tra cứu</h3>
             </div>
-            <!-- Phần nội dung công cụ tính toán hiện tại -->
-        </div>
-
-        <div class="formula-lookup">
-            <h4>Tra cứu công thức</h4>
             
-            <!-- Vật lý -->
-            <div class="subject-formulas physics-formulas">
-                <h5 class="subject-title"><i class="fas fa-atom"></i> Vật lý</h5>
-                <div class="formula-list">
-                    <div class="formula-item">
-                        <h5>Chuyển động cơ học</h5>
-                        <p>v = s/t (vận tốc)</p>
-                        <p>a = (v - v₀)/t (gia tốc)</p>
-                        <p>s = v₀t + ½at² (quãng đường)</p>
-                        <p>v = v₀ + at (vận tốc tức thời)</p>
+            <div class="tools-container">
+                <div class="calculator-section">
+                    <div class="tool-selector">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="tool-title">
+                                <h4>Chọn công cụ tính toán</h4>
+                                <p>Chọn công thức bạn muốn tính toán</p>
+                            </div>
+                        </div>
+                        <select id="toolSelect" onchange="changeTool()">
+                            <!-- Vật lý -->
+                            <optgroup label="Vật lý">
+                                <option value="force">
+                                    <i class="fas fa-arrows-alt"></i> Lực (F = m.a)
+                                </option>
+                                <option value="velocity">Vận tốc (v = s/t)</option>
+                                <option value="energy">Năng lượng (E = m.c²)</option>
+                                <option value="power">Công suất (P = W/t)</option>
+                                <option value="pressure">Áp suất (P = F/S)</option>
+                            </optgroup>
+                            <!-- Hóa học -->
+                            <optgroup label="Hóa học">
+                                <option value="concentration">Nồng độ phần trăm (C%)</option>
+                                <option value="molar">Nồng độ Mol (CM)</option>
+                                <option value="density">Khối lượng riêng (D)</option>
+                                <option value="ph">Độ pH</option>
+                            </optgroup>
+                            <!-- Sinh học -->
+                            <optgroup label="Sinh học">
+                                <option value="bmi">Chỉ số BMI</option>
+                                <option value="population">Mật độ quần thể (D = N/S)</option>
+                                <option value="growth">Tốc độ tăng trưởng</option>
+                            </optgroup>
+                        </select>
                     </div>
-                    <div class="formula-item">
-                        <h5>Động lực học</h5>
-                        <p>F = ma (định luật II Newton)</p>
-                        <p>F₁ = -F₂ (định luật III Newton)</p>
-                        <p>P = F.v (công suất)</p>
-                        <p>W = F.s.cosα (công)</p>
-                    </div>
-                    <div class="formula-item">
-                        <h5>Năng lượng</h5>
-                        <p>E = mc² (năng lượng)</p>
-                        <p>Ep = mgh (thế năng)</p>
-                        <p>Ek = ½mv² (động năng)</p>
-                        <p>K = ½kx² (đàn hồi)</p>
+
+                    <div class="calculator-container">
+                        <div id="forceCalculator" class="calculator physics-calc active">
+                            <h4>Tính Lực (F = m.a)</h4>
+                            <div class="input-group">
+                                <label>Khối lượng (m):</label>
+                                <input type="number" id="mass" placeholder="kg">
+                            </div>
+                            <div class="input-group">
+                                <label>Gia tốc (a):</label>
+                                <input type="number" id="acceleration" placeholder="m/s²">
+                            </div>
+                            <button onclick="calculateForce()" class="calc-btn physics-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result physics-result" id="forceResult"></div>
+                        </div>
+
+                        <div id="velocityCalculator" class="calculator">
+                            <h4>Tính Vận tốc (v = s/t)</h4>
+                            <div class="input-group">
+                                <label>Quãng đường (s):</label>
+                                <input type="number" id="distance" placeholder="m">
+                            </div>
+                            <div class="input-group">
+                                <label>Thời gian (t):</label>
+                                <input type="number" id="time" placeholder="s">
+                            </div>
+                            <button onclick="calculateVelocity()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="velocityResult"></div>
+                        </div>
+
+                        <div id="energyCalculator" class="calculator">
+                            <h4>Tính Năng lượng (E = m.c²)</h4>
+                            <div class="input-group">
+                                <label>Khối lượng (m):</label>
+                                <input type="number" id="mass-energy" placeholder="kg">
+                            </div>
+                            <button onclick="calculateEnergy()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="energyResult"></div>
+                        </div>
+
+                        <div id="powerCalculator" class="calculator">
+                            <h4>Tính Công suất (P = W/t)</h4>
+                            <div class="input-group">
+                                <label>Công (W):</label>
+                                <input type="number" id="work" placeholder="J">
+                            </div>
+                            <div class="input-group">
+                                <label>Thời gian (t):</label>
+                                <input type="number" id="time-power" placeholder="s">
+                            </div>
+                            <button onclick="calculatePower()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="powerResult"></div>
+                        </div>
+
+                        <!-- Vật lý -->
+                        <div id="pressureCalculator" class="calculator">
+                            <h4>Tính Áp suất (P = F/S)</h4>
+                            <div class="input-group">
+                                <label>Lực (F):</label>
+                                <input type="number" id="force-pressure" placeholder="N">
+                            </div>
+                            <div class="input-group">
+                                <label>Diện tích (S):</label>
+                                <input type="number" id="area" placeholder="m²">
+                            </div>
+                            <button onclick="calculatePressure()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="pressureResult"></div>
+                        </div>
+
+                        <!-- Hóa học -->
+                        <div id="concentrationCalculator" class="calculator chemistry-calc">
+                            <h4>Tính Nồng độ phần trăm (C%)</h4>
+                            <div class="input-group">
+                                <label>Khối lượng chất tan (m₁):</label>
+                                <input type="number" id="solute-mass" placeholder="g">
+                            </div>
+                            <div class="input-group">
+                                <label>Khối lượng dung dịch (m₂):</label>
+                                <input type="number" id="solution-mass" placeholder="g">
+                            </div>
+                            <button onclick="calculateConcentration()" class="calc-btn chemistry-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result chemistry-result" id="concentrationResult"></div>
+                        </div>
+
+                        <div id="molarCalculator" class="calculator">
+                            <h4>Tính Nồng độ Mol (CM)</h4>
+                            <div class="input-group">
+                                <label>Số mol chất tan (n):</label>
+                                <input type="number" id="moles" placeholder="mol">
+                            </div>
+                            <div class="input-group">
+                                <label>Thể tích dung dịch (V):</label>
+                                <input type="number" id="volume" placeholder="lít">
+                            </div>
+                            <button onclick="calculateMolar()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="molarResult"></div>
+                        </div>
+
+                        <!-- Sinh học -->
+                        <div id="bmiCalculator" class="calculator">
+                            <h4>Tính chỉ số BMI</h4>
+                            <div class="input-group">
+                                <label>Cân nặng (kg):</label>
+                                <input type="number" id="weight" placeholder="kg">
+                            </div>
+                            <div class="input-group">
+                                <label>Chiều cao (m):</label>
+                                <input type="number" id="height" placeholder="m">
+                            </div>
+                            <button onclick="calculateBMI()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="bmiResult"></div>
+                        </div>
+
+                        <div id="populationCalculator" class="calculator">
+                            <h4>Tính Mật độ quần thể (D = N/S)</h4>
+                            <div class="input-group">
+                                <label>Số cá thể (N):</label>
+                                <input type="number" id="population" placeholder="cá thể">
+                            </div>
+                            <div class="input-group">
+                                <label>Diện tích/Thể tích (S):</label>
+                                <input type="number" id="area-volume" placeholder="m² hoặc m³">
+                            </div>
+                            <button onclick="calculatePopulationDensity()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="populationResult"></div>
+                        </div>
+
+                        <!-- Hóa học -->
+                        <div id="densityCalculator" class="calculator">
+                            <h4>Tính Khối lượng riêng (D = m/V)</h4>
+                            <div class="input-group">
+                                <label>Khối lượng (m):</label>
+                                <input type="number" id="mass-density" placeholder="g">
+                            </div>
+                            <div class="input-group">
+                                <label>Thể tích (V):</label>
+                                <input type="number" id="volume-density" placeholder="mL">
+                            </div>
+                            <button onclick="calculateDensity()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="densityResult"></div>
+                        </div>
+
+                        <div id="phCalculator" class="calculator">
+                            <h4>Tính độ pH</h4>
+                            <div class="input-group">
+                                <label>Nồng độ H⁺ (mol/L):</label>
+                                <input type="number" id="h-concentration" placeholder="mol/L">
+                            </div>
+                            <button onclick="calculatePH()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                            </button>
+                            <div class="result" id="phResult"></div>
+                        </div>
+
+                        <!-- Sinh học -->
+                        <div id="growthCalculator" class="calculator">
+                            <h4>Tính Tốc độ tăng trưởng</h4>
+                            <div class="input-group">
+                                <label>Số lượng ban đầu (N₁):</label>
+                                <input type="number" id="initial-population" placeholder="cá thể">
+                            </div>
+                            <div class="input-group">
+                                <label>Số lượng sau cùng (N₂):</label>
+                                <input type="number" id="final-population" placeholder="cá thể">
+                            </div>
+                            <div class="input-group">
+                                <label>Thời gian (t):</label>
+                                <input type="number" id="time-growth" placeholder="ngày">
+            </div>
+                            <button onclick="calculateGrowthRate()" class="calc-btn">
+                                <i class="fas fa-calculator"></i> Tính toán
+                </button>
+                            <div class="result" id="growthResult"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Hóa học -->
-            <div class="subject-formulas chemistry-formulas">
-                <h5 class="subject-title"><i class="fas fa-flask"></i> Hóa học</h5>
-                <div class="formula-list">
-                    <div class="formula-item">
-                        <h5>Nồng độ dung dịch</h5>
-                        <p>C% = (m₁/m₂) × 100% (nồng độ %)</p>
-                        <p>CM = n/V (mol/lít)</p>
-                        <p>ρ = m/V (khối lượng riêng)</p>
-                        <p>n = m/M (số mol)</p>
+                <div class="formula-lookup">
+                    <h4>Tra cứu công thức</h4>
+                    
+                    <!-- Vật lý -->
+                    <div class="subject-formulas physics-formulas">
+                        <h5 class="subject-title"><i class="fas fa-atom"></i> Vật lý</h5>
+                        <div class="formula-list">
+                            <div class="formula-item">
+                                <h5>Chuyển động cơ học</h5>
+                                <p>v = s/t (vận tốc)</p>
+                                <p>a = (v - v₀)/t (gia tốc)</p>
+                                <p>s = v₀t + ½at² (quãng đường)</p>
+                                <p>v = v₀ + at (vận tốc tức thời)</p>
+                            </div>
+                            <div class="formula-item">
+                                <h5>Động lực học</h5>
+                                <p>F = ma (định luật II Newton)</p>
+                                <p>F₁ = -F₂ (định luật III Newton)</p>
+                                <p>P = F.v (công suất)</p>
+                                <p>W = F.s.cosα (công)</p>
+                            </div>
+                            <div class="formula-item">
+                                <h5>Năng lượng</h5>
+                                <p>E = mc² (năng lượng)</p>
+                                <p>Ep = mgh (thế năng)</p>
+                                <p>Ek = ½mv² (động năng)</p>
+                                <p>K = ½kx² (đàn hồi)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="formula-item">
-                        <h5>Cân bằng hóa học</h5>
-                        <p>K = [C]ᶜ[D]ᵈ/[A]ᵃ[B]ᵇ</p>
-                        <p>pH = -log[H⁺]</p>
-                        <p>pOH = -log[OH⁻]</p>
-                        <p>pH + pOH = 14</p>
-                    </div>
-                    <div class="formula-item">
-                        <h5>Điện hóa</h5>
-                        <p>m = kIt (định luật Faraday)</p>
-                        <p>E° = E°(ox) + E°(red)</p>
-                        <p>ΔG = -nFE°</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Sinh học -->
-            <div class="subject-formulas biology-formulas">
-                <h5 class="subject-title"><i class="fas fa-dna"></i> Sinh học</h5>
-                <div class="formula-list">
-                    <div class="formula-item">
-                        <h5>Di truyền học</h5>
-                        <p>P × P → F₁ (lai thuần)</p>
-                        <p>F₁ × F₁ → F₂ (tỷ lệ 3:1)</p>
-                        <p>F₁ × P → Bc (lai thuận)</p>
-                        <p>Tần số gen: p + q = 1</p>
+                    <!-- Hóa học -->
+                    <div class="subject-formulas chemistry-formulas">
+                        <h5 class="subject-title"><i class="fas fa-flask"></i> Hóa học</h5>
+                        <div class="formula-list">
+                            <div class="formula-item">
+                                <h5>Nồng độ dung dịch</h5>
+                                <p>C% = (m₁/m₂) × 100% (nồng độ %)</p>
+                                <p>CM = n/V (mol/lít)</p>
+                                <p>ρ = m/V (khối lượng riêng)</p>
+                                <p>n = m/M (số mol)</p>
+                            </div>
+                            <div class="formula-item">
+                                <h5>Cân bằng hóa học</h5>
+                                <p>K = [C]ᶜ[D]ᵈ/[A]ᵃ[B]ᵇ</p>
+                                <p>pH = -log[H⁺]</p>
+                                <p>pOH = -log[OH⁻]</p>
+                                <p>pH + pOH = 14</p>
+                            </div>
+                            <div class="formula-item">
+                                <h5>Điện hóa</h5>
+                                <p>m = kIt (định luật Faraday)</p>
+                                <p>E° = E°(ox) + E°(red)</p>
+                                <p>ΔG = -nFE°</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="formula-item">
-                        <h5>Sinh thái học</h5>
-                        <p>D = N/S (mật độ quần thể)</p>
-                        <p>r = (N₂ - N₁)/(N₁ × t) (tốc độ tăng trưởng)</p>
-                        <p>H = -Σ(pi × ln pi) (đa dạng sinh học)</p>
-                    </div>
-                    <div class="formula-item">
-                        <h5>Trao đổi chất</h5>
-                        <p>C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O</p>
-                        <p>Hiệu suất = (TT/LT) × 100%</p>
-                        <p>BMI = m/h² (kg/m²)</p>
+
+                    <!-- Sinh học -->
+                    <div class="subject-formulas biology-formulas">
+                        <h5 class="subject-title"><i class="fas fa-dna"></i> Sinh học</h5>
+                        <div class="formula-list">
+                            <div class="formula-item">
+                                <h5>Di truyền học</h5>
+                                <p>P × P → F₁ (lai thuần)</p>
+                                <p>F₁ × F₁ → F₂ (tỷ lệ 3:1)</p>
+                                <p>F₁ × P → Bc (lai thuận)</p>
+                                <p>Tần số gen: p + q = 1</p>
+                            </div>
+                            <div class="formula-item">
+                                <h5>Sinh thái học</h5>
+                                <p>D = N/S (mật độ quần thể)</p>
+                                <p>r = (N₂ - N₁)/(N₁ × t) (tốc độ tăng trưởng)</p>
+                                <p>H = -Σ(pi × ln pi) (đa dạng sinh học)</p>
+                            </div>
+                            <div class="formula-item">
+                                <h5>Trao đổi chất</h5>
+                                <p>C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O</p>
+                                <p>Hiệu suất = (TT/LT) × 100%</p>
+                                <p>BMI = m/h² (kg/m²)</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về chúng tôi</h3>
+                    <p>Trợ lý Khoa học THCS là công cụ hỗ trợ học tập hiệu quả dành cho học sinh trung học cơ sở.</p>
+                <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Thông tin</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-info-circle"></i> Về chúng tôi</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Chính sách bảo mật</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> Email: contact@trolykhoahoc.com</li>
+                        <li><i class="fas fa-phone"></i> Hotline: 0329.456.789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Địa chỉ: Đồng Nai, Việt Nam</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trợ lý Khoa học THCS. Đã đăng ký bản quyền.</p>
+            </div>
+        </footer>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Về chúng tôi</h3>
-                <p>Trợ lý Khoa học THCS là công cụ hỗ trợ học tập hiệu quả dành cho học sinh trung học cơ sở.</p>
-            <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Thông tin</h3>
-                <ul>
-                    <li><a href="#"><i class="fas fa-info-circle"></i> Về chúng tôi</a></li>
-                    <li><a href="#"><i class="fas fa-shield-alt"></i> Chính sách bảo mật</a></li>
-                    <li><a href="#"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Liên hệ</h3>
-                <ul>
-                    <li><i class="fas fa-envelope"></i> Email: contact@trolykhoahoc.com</li>
-                    <li><i class="fas fa-phone"></i> Hotline: 0329.456.789</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Địa chỉ: Hà Nội, Việt Nam</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Trợ lý Khoa học THCS. Đã đăng ký bản quyền.</p>
-        </div>
-    </footer>
-</div>
+    <script src="static/script.js"></script>
+    <script src="static/calculator.js"></script>
+    <script src="https://dl.dropboxusercontent.com/scl/fi/2ae1rktudv7dm3704doaa/chatbot.js?rlkey=9cour9571967bh7i32zyu8k89&st=t4pxh4y7&dl=1"></script>
 
-<script src="static/script.js"></script>
-<script src="static/calculator.js"></script>
 </body>
 </html>

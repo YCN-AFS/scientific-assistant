@@ -90,3 +90,24 @@ function getSubjectName(subject) {
     };
     return names[subject] || subject;
 }
+
+function showVideo(videoId) {
+    const videoElement = document.getElementById(`video-${videoId}`);
+    const allVideos = document.querySelectorAll('.video-player');
+    
+    // Ẩn tất cả các video khác
+    allVideos.forEach(video => {
+        if (video.id !== `video-${videoId}`) {
+            video.style.display = 'none';
+        }
+    });
+    
+    // Toggle video được chọn
+    if (videoElement.style.display === 'none') {
+        videoElement.style.display = 'block';
+        // Scroll đến video
+        videoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+        videoElement.style.display = 'none';
+    }
+}
