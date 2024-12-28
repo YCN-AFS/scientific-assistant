@@ -1374,3 +1374,21 @@ button:hover {
 .formula-list::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
 }
+
+/* Mặc định ẩn tất cả các công thức */
+.subject-formulas {
+    display: none;
+}
+
+/* Hiển thị công thức vật lý mặc định (vì physics là active ban đầu) */
+.physics-formulas {
+    display: block;
+}
+
+/* Style cho nút môn học active */
+.subject-btn.active {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}

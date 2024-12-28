@@ -66,16 +66,26 @@ function loadVideos(grade) {
 }
 
 function selectSubject(subject) {
-    currentSubject = subject;
+    // Reset active state của tất cả các nút
     document.querySelectorAll('.subject-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    const selectedBtn = document.querySelector(`[data-subject="${subject}"]`);
-    if (selectedBtn) {
-        selectedBtn.classList.add('active');
-    }
-    document.getElementById('currentSubject').textContent = `Môn học: ${getSubjectName(subject)}`;
     
+    // Thêm active state cho nút được chọn
+    document.querySelector(`.subject-btn.${subject}`).classList.add('active');
+    
+    // Ẩn tất cả các phần công thức
+    document.querySelectorAll('.subject-formulas').forEach(formula => {
+        formula.style.display = 'none';
+    });
+    
+    // Hiển thị phần công thức tương ứng
+    document.querySelector(`.${subject}-formulas`).style.display = 'block';
+    
+    // Cập nhật môn học hiện tại
+    currentSubject = subject;
+    
+    // Nếu đã chọn lớp thì load lại topics và videos
     if (currentGrade) {
         loadTopics(currentGrade);
         loadVideos(currentGrade);
